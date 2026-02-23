@@ -2,7 +2,7 @@
 
 Proto Chain is a DSL which describes the encapsulation of traffic proxy.
 
-# Proto Chain DSL Syntax
+# Syntax
 
 The syntax of Proto Chain DSL is defined using a variant of Extended Backus-Naur Form (EBNF), following conventions similar to Go's [grammar specification](https://go.dev/ref/spec) .
 
@@ -34,6 +34,25 @@ ChainList = "[" , Chain , { "," , Chain } , "]" ;
 
 /* Top-level Proto Chain expression: either a single chain or a list of chains */
 ProtoChain = Chain | ChainList ;
+```
+
+# Predefined Identifier and Alias
+
+```
+all:={tcp,udp,icmp}
+L4:={tcp,udp}
+tunnel:={http_connect,http_proxy,gRPC,websocket}
+multipex:={smux,yamux,h2mux}
+
+tcp udp 
+icmp
+tls quic
+websocket gRPC kcp 
+http http_connect http_proxy
+socks ssh masque
+tor ipsec wireguard
+smux yamux h2mux
+up down
 ```
 
 # Example
